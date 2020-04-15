@@ -8,10 +8,12 @@
  * This file will hold all game logic
  */
 import java.util.Scanner;
+import java.util.Random;
 
 public class GameEngine {
     UserInterface ui;
     Scanner kb;
+    Random rand;
 
     // stores value of main menu option
     // chosen by user
@@ -26,6 +28,8 @@ public class GameEngine {
     GameEngine() {
         ui = new UserInterface();
         kb = new Scanner(System.in);
+        rand = new Random();
+
         testBoardGame = new boolean[5][5];
     }
 
@@ -65,7 +69,8 @@ public class GameEngine {
                     playGame();
                     break;
                 case 2: // how-to-play-game
-                    mainMenuLoop = false;
+                    ui.howToPlayGame();
+                    // mainMenuLoop = false;
                     break;
                 case 3: // exit game
                     mainMenuLoop = false;
@@ -81,10 +86,8 @@ public class GameEngine {
      * play game 
      */
     public void playGame() {
-        ui.testBoardBlank();
-        ui.testBoardFilled();
-
-        populateTestBoardFixed();
+        // populateTestBoardFixed();
+        randomizeTileBoard();
 
         ui.booleanTestBoard(testBoardGame);
 
@@ -217,6 +220,18 @@ public class GameEngine {
         ui.exitGame();
         kb.close();
         System.exit(0);
+    }
+
+    /**
+     * randomizes board with true false values
+     * 
+     */
+    public void randomizeTileBoard() {  
+        for(int row = 0; row < testBoardGame.length; row++){
+            for(int col = 0; col < testBoardGame[row].length; col++){
+                testBoardGame[row][col] = rand.nextBoolean();
+            }
+        }
     }
 
     /**

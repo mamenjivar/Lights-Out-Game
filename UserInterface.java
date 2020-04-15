@@ -1,7 +1,7 @@
 /**
  * Author: Miguel Menjivar
  * 
- * Date: April 14, 2020
+ * Date: April 15, 2020
  * 
  * UserInterface:
  * Will hold all the print statements of the game
@@ -22,6 +22,31 @@ public class UserInterface {
                         + "3) About Author \n"
                         + "4) Exit game\n"
                         + ">> ");
+    }
+
+    /**
+     * Prompts user with how to play the game
+     */
+    public void howToPlayGame() {
+        System.out.println("Lights Out!\n"
+                        + "In this particular game, you will be presented with a 5x5 grid\n"
+                        + "with a series of numbers on those tiles that signify that they\n"
+                        + "are 'on'. If no numbers are presented on the tile, then they are\n"
+                        + "considered 'off'. The goal of the game is to try and turn off all\n"
+                        + "the lights in the game by inputting the number specified. The caveat\n"
+                        + "is that if you toggle a light off, the top/bottom, left/right of the\n"
+                        + "light that was chosen will be inverted if it were on or off. Find a way\n"
+                        + "to turn off all the lights and you win the game!");
+    }
+
+    /**
+     * A simple about author page with little information
+     */
+    public void author() {
+        System.out.println("Created by: Miguel Menjivar\n"
+                        + "Date: April 15, 2020\n"
+                        + "Github: https://github.com/mamenjivar"
+                        + "Github Repository: https://github.com/mamenjivar/Lights-Out-Game");
     }
 
     /**
