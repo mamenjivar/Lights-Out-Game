@@ -90,12 +90,11 @@ public class GameEngine {
 
         ui.booleanTestBoard(testBoardGame);
 
-        // test tile 
+        // toggles tiles top/bottom left/right
         toggleBoard();
 
-        ui.booleanTestBoard(testBoardGame);
-
-
+        System.out.println("you've won the game again!");
+        exit();
     }
 
     /**
@@ -103,24 +102,112 @@ public class GameEngine {
      */
     public void toggleBoard() {
         String toggleTile;
+        boolean playBoard = true;
 
-        try{
-            toggleTile = kb.nextLine();
-            String[] split = toggleTile.split("");
+        while(playBoard){
+            try {
+                ui.makeAChoice();
+                toggleTile = kb.nextLine();
+                String[] split = toggleTile.split("");
 
-            int row = Integer.parseInt(split[0]);
-            int col = Integer.parseInt(split[1]);
+                int row = Integer.parseInt(split[0]);
+                int col = Integer.parseInt(split[1]);
 
-            testBoardGame[row][col] = false;
-        } catch(Exception e) {
-            System.out.println("");
-            System.out.println(e);
-            kb.next();
-            ui.notANumberError();
+                // tile is already false
+                if (testBoardGame[row][col] == false) {
+                    ui.tileIsFalse();
+                }
+
+                if (row == 0 && col == 0) {
+                    toggleTile(row, col); // center only
+                    toggleTile(row + 1, col); // right
+                    toggleTile(row, col + 1); // down
+                } else if (row == 4 && col == 4) {
+                    toggleTile(row, col); // center
+                    toggleTile(row - 1, col); // up
+                    toggleTile(row, col - 1); // left
+                } else if(row == 0 && col == 4) {
+                    toggleTile(row, col); // center
+                    toggleTile(row, col - 1); // left
+                    toggleTile(row + 1, col); // down
+                } else if (row == 4 && col == 0){
+                    toggleTile(row, col); // center
+                    toggleTile(row - 1, col); // up
+                    toggleTile(row, col + 1); // right
+                } else if (row == 0) {
+                    toggleTile(row, col); // center
+                    toggleTile(row + 1, col); // down
+                    toggleTile(row, col + 1); // right
+                    toggleTile(row, col - 1); // left)
+                } else if (col == 0) {
+                    toggleTile(row, col); // center
+                    toggleTile(row, col + 1); // right
+                    toggleTile(row - 1, col); // up
+                    toggleTile(row + 1, col); // down
+                } else if(row == 4) {
+                    toggleTile(row, col); // center
+                    toggleTile(row - 1, col); // left
+                    toggleTile(row, col + 1); // down
+                    toggleTile(row, col - 1); // up
+                } else if (col == 4) {
+                    toggleTile(row, col); // center
+                    toggleTile(row, col - 1); // up
+                    toggleTile(row - 1, col); // left
+                    toggleTile(row + 1, col); // right
+                } else if(row >= 5) {
+                    ui.invalidTile();
+                }else {
+                    toggleTile(row, col); // center;
+                    toggleTile(row - 1, col); // up
+                    toggleTile(row + 1, col); // down
+                    toggleTile(row, col + 1); // right
+                    toggleTile(row, col - 1); // left
+                }
+
+                // prints current game board
+                ui.booleanTestBoard(testBoardGame);
+
+                // if the board is all empty
+                // if(didYouWin()){
+                //     playBoard = false;
+
+                // }
+            } catch (Exception e) {
+                System.out.println("");
+                System.out.println(e);
+                kb.next();
+                ui.notANumberError();
+            }
         }
     }
 
+    /**
+     * toggle tile 
+     * true => false
+     * false => true
+     * 
+     * @param row
+     * @param col
+     */
+    public void toggleTile(int row, int col){
+        testBoardGame[row][col] = !testBoardGame[row][col];
+    }
+
+    /**
+     * test to see if user win game
+     * if all board = false => win game
+     * 
+     * @return
+     */
     public boolean didYouWin() {
+        // boolean didYouWin = false;
+        for(int row = 0; row < testBoardGame.length; row++){
+            for(int col = 0; col < testBoardGame[row].length; col++){
+                if(testBoardGame[row][col] == false){
+                    return false;
+                }
+            }
+        }
         return true;
     }
 

@@ -1,3 +1,4 @@
+import sun.jvm.hotspot.tools.SysPropsDumper;
 
 /**
  * Author: Miguel Menjivar
@@ -26,11 +27,34 @@ public class UserInterface {
     }
 
     /**
+     * prompts user that tile can't be chosen
+     * because it's already false
+     */
+    public void tileIsFalse() {
+        System.out.println("Tile is can't be chosen => already FALSE");
+    }
+
+    /**
      * When the user pickes a letter not a number when
      * the menu prompts the use of a number instead
      */
     public void notANumberError(){
         System.out.println("Please enter a NUMBER not a letter\n");
+    }
+
+    /**
+     * when the user chooses a tile that is not in the grid
+     */
+    public void invalidTile() {
+        System.out.println("Invalid tile, please choose another one");
+    }
+
+    /**
+     * 
+     */
+    public void makeAChoice() {
+        System.out.println("");
+        System.out.print(">> ");
     }
 
     /**
@@ -43,13 +67,24 @@ public class UserInterface {
     }
 
     /**
+     * When user clears the board successfully
+     * win the game
+     */
+    public void youWon() {
+        System.out.println("You have won the game!\n"
+                        + "You have emptied the board!");
+    }
+
+    /**
      * When the user decides to exit the game. 
      */
     public void exitGame(){
         System.out.println("Game Exited...\n Goodbye...");
     }
 
-
+    /**
+     * generates an empty board just for reference
+     */
     public void testBoardBlank() {
         System.out.println("_____________________");
         System.out.println("|   |   |   |   |   |");
@@ -69,6 +104,9 @@ public class UserInterface {
         System.out.println("|___|___|___|___|___|");
     }
 
+    /**
+     * prints an empty board with indexes for reference
+     */
     public void testBoardFilled() {
         System.out.println("__________________________");
         System.out.println("|    |    |    |    |    |");
@@ -88,8 +126,13 @@ public class UserInterface {
         System.out.println("|____|____|____|____|____|");
     }
 
+    /**
+     * prints fixed board with conditions 
+     * of true/false tiles
+     * 
+     * @param testBoardPrint
+     */
     public void booleanTestBoard(boolean[][] testBoardPrint) {
-        
         System.out.println("__________________________");
         System.out.println("|    |    |    |    |    |");
         System.out.println("| " + ((testBoardPrint[0][0] == true) ? "00" : "  ") + " | " + ((testBoardPrint[0][1] == true) ? "01" : "  ")  + " | " + ((testBoardPrint[0][2] == true) ? "02" : "  ") + " | " + ((testBoardPrint[0][3] == true) ? "03" : "  ") + " | " + ((testBoardPrint[0][4] == true) ? "04" : "  ") +" |");
@@ -122,13 +165,5 @@ public class UserInterface {
                 + ((testBoardPrint[4][3] == true) ? "43" : "  ") + " | "
                 + ((testBoardPrint[4][4] == true) ? "44" : "  ") + " |");
         System.out.println("|____|____|____|____|____|");
-    }
-
-    public void testBoardArray(boolean[][] array) {
-        for(int row = 0; row < array.length; row++){
-            for(int col = 0; col < array[row].length; col++){
-                System.out.println(array[row][col]);
-            }
-        }
     }
 }
