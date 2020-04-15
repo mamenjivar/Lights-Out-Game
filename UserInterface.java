@@ -1,5 +1,3 @@
-import sun.jvm.hotspot.tools.SysPropsDumper;
-
 /**
  * Author: Miguel Menjivar
  * 
@@ -135,7 +133,11 @@ public class UserInterface {
     public void booleanTestBoard(boolean[][] testBoardPrint) {
         System.out.println("__________________________");
         System.out.println("|    |    |    |    |    |");
-        System.out.println("| " + ((testBoardPrint[0][0] == true) ? "00" : "  ") + " | " + ((testBoardPrint[0][1] == true) ? "01" : "  ")  + " | " + ((testBoardPrint[0][2] == true) ? "02" : "  ") + " | " + ((testBoardPrint[0][3] == true) ? "03" : "  ") + " | " + ((testBoardPrint[0][4] == true) ? "04" : "  ") +" |");
+        System.out.println("| " + ((testBoardPrint[0][0] == true) ? "00" : "  ") + " | "
+                + ((testBoardPrint[0][1] == true) ? "01" : "  ") + " | "
+                + ((testBoardPrint[0][2] == true) ? "02" : "  ") + " | "
+                + ((testBoardPrint[0][3] == true) ? "03" : "  ") + " | "
+                + ((testBoardPrint[0][4] == true) ? "04" : "  ") + " |");
         System.out.println("|____|____|____|____|____|");
         System.out.println("|    |    |    |    |    |");
         System.out.println("| " + ((testBoardPrint[1][0] == true) ? "10" : "  ") + " | "

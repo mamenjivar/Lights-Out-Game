@@ -36,8 +36,6 @@ public class GameEngine {
     public void start(){
         ui.title();
         mainMenu();
-
-
     }
 
     /**
@@ -168,10 +166,10 @@ public class GameEngine {
                 ui.booleanTestBoard(testBoardGame);
 
                 // if the board is all empty
-                // if(didYouWin()){
-                //     playBoard = false;
+                if(didYouWin()){
+                    playBoard = false;
 
-                // }
+                }
             } catch (Exception e) {
                 System.out.println("");
                 System.out.println(e);
@@ -203,7 +201,7 @@ public class GameEngine {
         // boolean didYouWin = false;
         for(int row = 0; row < testBoardGame.length; row++){
             for(int col = 0; col < testBoardGame[row].length; col++){
-                if(testBoardGame[row][col] == false){
+                if(testBoardGame[row][col] == true){
                     return false;
                 }
             }
@@ -229,36 +227,36 @@ public class GameEngine {
         // 1st row
         testBoardGame[0][0] = false;
         testBoardGame[0][1] = false;
-        testBoardGame[0][2] = true;
+        testBoardGame[0][2] = false;
         testBoardGame[0][3] = false;
         testBoardGame[0][4] = false;
 
         // 2nd row
         testBoardGame[1][0] = false;
-        testBoardGame[1][1] = true;
-        testBoardGame[1][2] = false;
+        testBoardGame[1][1] = false;
+        testBoardGame[1][2] = true;
         testBoardGame[1][3] = false;
         testBoardGame[1][4] = false;
 
         // 3rd row
         testBoardGame[2][0] = false;
         testBoardGame[2][1] = true;
-        testBoardGame[2][2] = false;
-        testBoardGame[2][3] = false;
+        testBoardGame[2][2] = true;
+        testBoardGame[2][3] = true;
         testBoardGame[2][4] = false;
 
         // 4th row
         testBoardGame[3][0] = false;
         testBoardGame[3][1] = false;
-        testBoardGame[3][2] = false;
-        testBoardGame[3][3] = true;
+        testBoardGame[3][2] = true;
+        testBoardGame[3][3] = false;
         testBoardGame[3][4] = false;
 
         // 5th row
         testBoardGame[4][0] = false;
         testBoardGame[4][1] = false;
         testBoardGame[4][2] = false;
-        testBoardGame[4][3] = true;
+        testBoardGame[4][3] = false;
         testBoardGame[4][4] = false;
     }
 }
